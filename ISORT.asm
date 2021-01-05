@@ -64,16 +64,16 @@ main:
 	    xor RAX, RAX; RAX = 0
         xor RCX, RCX; RCX = 0
         xor RBX, RBX; RBX = 0
-    ; prompt user for sorting size
+    ; prompt user for sorting type
     mov RDI, sorting_type_msg
     call printf
     
-    ;scan input size
+    ;scan for sorting type
     mov RDI,input_format
     mov RSI, sortingType
     call scanf
     mov R15, [sortingType]
-    
+    ;jump if number is 2 to descending order code other wise continue with the ascending order
     cmp R15, 2
     je DISORT_1
     
@@ -107,7 +107,7 @@ AISORT1_END:
 ;***************** Ascending INSERTION SORT END *******************   
 
 
-;***************** Decending INSERTION SORT START *******************        
+;***************** DESCENDING INSERTION SORT START *******************        
 DISORT_1:
 	cmp RSI, [size]
 	jge DISORT1_END
@@ -133,7 +133,7 @@ DISORT_1:
 DISORT1_END:
 	mov RBX, 0    
         jmp PRINT_OUTPUT_MSG
-;***************** Decending INSERTION SORT END *******************     
+;***************** DESCENDING INSERTION SORT END *******************     
     PRINT_OUTPUT_MSG:
 
         ;Clear RAX, RCX and RBX
